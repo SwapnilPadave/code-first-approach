@@ -1,0 +1,54 @@
+﻿@model WebApplication2.Models.Product
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<h2>Edit Product</h2>
+<form action="/Products/Update/@Model.ProductID" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="ProductName">Product Name:</label>
+            <input type="hidden" name="ProductID" value="@Model.ProductID" />
+            <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="Product Name" value="@Model.ProductName" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="CategoryID">Category ID</label>
+            <select class="form-control" id="CategoryID" name="CategoryID">
+                <option value="">Please Select Category</option>
+                @foreach (var cat in ViewBag.categories)
+                {
+                    if (cat.CategoryID == Model.CategoryID)
+                    {
+                        <option value="@cat.CategoryID" selected="selected">@cat.CategoryName</option>
+                    }
+                    else
+                    {
+                        <option value="@cat.CategoryID">@cat.CategoryName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="CategoryName">Category Name</label>
+            <select class="form-control" id="CategoryName" name="CategoryName">
+                <option value="">Please Select Category</option>
+                @foreach (var cat in ViewBag.categories)
+                {
+                    if (cat.CategoryName == Model.Category.CategoryName)
+                    {
+                        <option value="@cat.CategoryName" selected="selected">@cat.CategoryName</option>
+                    }
+                    else
+                    {
+                        <option value="@cat.CategoryName">@cat.CategoryName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Products/index" class="btn btn-danger">Cancle</a>
+</form>
+

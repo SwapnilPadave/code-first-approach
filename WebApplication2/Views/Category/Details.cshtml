@@ -1,0 +1,19 @@
+﻿@model WebApplication2.Models.Category
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<h2>Details</h2>
+<table class="table">
+    <tr>
+        <th>CategoryID</th>
+        <td>@Model.CategoryID</td>
+    </tr>
+    <tr>
+        <th>CategoryName</th>
+        <td>@Model.CategoryName</td>
+    </tr>
+</table>
+<a href="/Category/index">Back To Category List</a>
